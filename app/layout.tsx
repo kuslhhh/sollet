@@ -11,7 +11,7 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
   title: 'Sollet',
-  description: 'A Solana Balance Tracker',
+  description: 'A simple and intuitive tool for checking Solana wallet balances and performing airdrops directly from your browser.',
 };
 
 export default function RootLayout({
