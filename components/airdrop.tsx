@@ -3,14 +3,13 @@
 import React, { useState } from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
-import { airdrop } from '@/lib/logic'; // Make sure to import your airdrop function
-import { Card, CardContent, CardTitle } from "@/components/ui/card"; // Import Card components
+import { airdrop } from '@/lib/logic';
 
 const Airdrop = () => {
   const [recipientAddress, setRecipientAddress] = useState("");
   const [amount, setAmount] = useState("");
   const [transactionSignature, setTransactionSignature] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null); // State for error messages
+  const [error, setError] = useState<string | null>(null); 
 
   const airdropHandler = async () => {
     if (recipientAddress && amount) {
@@ -22,14 +21,14 @@ const Airdrop = () => {
         }
         const signature = await airdrop(recipientAddress, amountInSOL);
         setTransactionSignature(signature);
-        setError(null); // Clear any previous error
+        setError(null);
       } catch (error) {
         console.error("Error during airdrop:", error);
-        setTransactionSignature(null); // Clear transaction signature on error
-        setError("Failed to send airdrop. Please try again."); // Set error message
+        setTransactionSignature(null); 
+        setError("Failed to send airdrop. Please try again.");
       }
     } else {
-      setError("Please enter both recipient address and amount."); // Handle empty fields
+      setError("Please enter both recipient address and amount.");
     }
   };
 
@@ -55,9 +54,7 @@ const Airdrop = () => {
               Clear
             </Button>
           </div>
-          {/* Display error message below buttons */}
           {error && <p className="text-[#ff3333] font-bold text-center mt-2">{error}</p>}
-          {/* Display transaction signature if available */}
           {transactionSignature && (
             <div className="flex flex-row gap-2 w-full">
               <p className="text-center">Transaction Signature: {transactionSignature}</p>

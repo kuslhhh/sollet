@@ -19,7 +19,6 @@ import Image from "next/image";
 const Wrapper = () => {
     const [activeTab, setActiveTab] = useState<string>("balance");
 
-    // Handler to reset states or perform actions on tab change
     const handleTabChange = (value: string) => {
         setActiveTab(value);
     };

@@ -4,26 +4,25 @@ import React, { useState } from 'react';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { getWalletBalance } from '@/lib/logic';
-import { PublicKey } from '@solana/web3.js';
 
 const Balance = () => {
   const [balance, setBalance] = useState("");
   const [address, setAddress] = useState("");
-  const [error, setError] = useState<string | null>(null); // State for error messages
+  const [error, setError] = useState<string | null>(null); 
 
   const balanceHandler = async () => {
     if (address) {
       try {
-        const balance = await getWalletBalance(address); // Address is passed as a string
+        const balance = await getWalletBalance(address); 
         setBalance(balance.toString());
-        setError(null); // Clear any previous error
+        setError(null); 
       } catch (error) {
         console.error("Error fetching balance:", error);
-        setBalance(""); // Clear balance on error
-        setError("Invalid address or unable to fetch balance."); // Set error message
+        setBalance(""); 
+        setError("Invalid address or unable to fetch balance."); 
       }
     } else {
-      setError("Please enter a valid wallet address."); // Handle empty address
+      setError("Please enter a valid wallet address."); 
     }
   };
 
@@ -42,9 +41,8 @@ const Balance = () => {
           Clear
         </Button>
       </div>
-      {/* Display error message below buttons */}
+      
       {error && <p className="text-[#ff3333] font-bold text-center mt-2">{error}</p>}
-      {/* Display balance if available */}
       {balance && (
         <div className="flex flex-row gap-2 w-full">
           <p className="text-center">Balance: {balance}</p>
